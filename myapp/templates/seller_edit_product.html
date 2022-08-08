@@ -1,0 +1,63 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="form_container">
+            <div class="heading_container">
+              <h2>
+                Edit Product
+              </h2>
+            </div>
+            {% if msg %}
+                <b style="color:red;">{{msg}}</b>
+            {% endif %}
+            <form enctype="multipart/form-data" method="post" action="{% url 'seller_edit_product' pk=product.pk %}">
+            	{% csrf_token %}
+              <div>
+                <input type="text" name="product_company" placeholder="Product Company" value="{{product.product_company}}" />
+              </div>
+              <div>
+                <input type="text" name="product_model" placeholder="Product Model" value="{{product.product_model}}" />
+              </div>
+              <div>
+                <input type="text" name="product_price" placeholder="Product Price" value="{{product.product_price}}" />
+              </div>
+              <div>
+                <label>Product Discripotions :</label><br>  
+                <textarea cols="91px " rows="5px" type="text" name="product_desc" class="message-box" placeholder="Product Desc" value="{{product.product_desc}}"/>{{product.product_desc}}</textarea> 
+              </div>
+              <div>
+                <label>Current Product Image :</label><br>
+                <img src="{{product.product_image.url}}" style="width: 150px; height:150px;">
+              </div><br>
+              <div>
+              	<input type="file"  name="product_image" />
+              </div>
+              <div class="d-flex " >
+              	<input type="submit"   name="action" value="Update Product" class="btn btn-primary" style="margin-left: 120px; margin-right: 120px;">
+              </div>
+            </form>
+          </div>
+       
+      </div>
+    </div>
+  </section>
+
+  <!-- end contact section -->
+
+<!-- End Google Map -->
+
+</body>
+
+</html>
+{% endblock %}

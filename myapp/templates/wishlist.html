@@ -1,0 +1,53 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body class="sub_page" >
+  <!-- shop section -->
+  <section class="shop_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Wishlist
+        </h2>
+      </div>
+      <div class="row">
+        {% if wishlists %}
+          {% for i in wishlists %}
+          <div class="col-md-6 ">         
+            <div class="box">
+              <a href="">
+                <div class="img-box">
+                  <a href="{% url 'single_product' pk=i.product.pk %}"><img src="{{i.product.product_image.url}}" alt="" style="width:250px; height: 250px; "></a>
+                </div>
+                <div class="detail-box">
+                  <h6>
+                    {{i.product.product_company}}
+                  </h6>
+                  <h6>
+                    Price:
+                    <span>
+                      {{i.product.product_price}}
+                    </span>
+                  </h6>
+                </div>
+                <div class="new">
+                  <span>
+                   New 
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}  
+        {% else %}
+          <h1 align="center">No Product In Wishlist </h1> 
+        {% endif  %} 
+      </div>  
+  </section>
+</body>
+</html>
+{% endblock %}

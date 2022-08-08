@@ -1,0 +1,51 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>      
+  <section class="about_section layout_padding">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6 col-lg-5 ">
+          <div class="img-box">
+            <img src="{{product.product_image.url}}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-7">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                Product Details
+              </h2>
+            </div>
+            <p>
+              {{product.product_desc}}
+            </p>
+            <a href="{% url 'seller_edit_product' pk=product.pk %}" type="button">
+              EDIT
+            </a>
+            &nbsp;&nbsp;
+             <a href="{% url 'seller_delete_product' pk=product.pk %}" type="button">
+              DELETE
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- feature section -->
+
+
+  <!-- end contact section -->
+
+  <!-- client section -->   
+</body>
+
+</html>
+{% endblock %}
